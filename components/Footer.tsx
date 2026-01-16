@@ -79,9 +79,9 @@ export const Footer: React.FC = () => {
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-slate-500 text-sm mb-4 md:mb-0">© {new Date().getFullYear()} Build Your Network. All rights reserved.</p>
           <div className="flex space-x-6 text-sm text-slate-500">
-             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-             <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
+             <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+             <Link to="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
+             <Link to="/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>

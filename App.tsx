@@ -9,6 +9,9 @@ import { AboutUs } from './pages/AboutUs';
 import { Sponsorships } from './pages/Sponsorships';
 import { Feedbacks } from './pages/Feedbacks';
 import { Contact } from './pages/Contact';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import { TermsOfService } from './pages/TermsOfService';
+import { CookiePolicy } from './pages/CookiePolicy';
 import { ModalProvider } from './context/ModalContext';
 import { GetInvitedModal } from './components/GetInvitedModal';
 
@@ -38,6 +41,9 @@ const App: React.FC = () => {
             <Route path="feedbacks" element={<Feedbacks />} />
             <Route path="contact" element={<Contact />} />
             <Route path="find-chapter" element={<FindChapter />} />
+            <Route path="privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="terms-of-service" element={<TermsOfService />} />
+            <Route path="cookie-policy" element={<CookiePolicy />} />
           </Route>
         </Routes>
       </HashRouter>
