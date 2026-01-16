@@ -2,8 +2,11 @@ import React from 'react';
 import { Section } from '../components/Section';
 import { Button } from '../components/Button';
 import { ShieldCheck, TrendingUp, Users, Target, Heart } from 'lucide-react';
+import { useModal } from '../context/ModalContext';
 
 export const AboutUs: React.FC = () => {
+  const { openModal } = useModal();
+  
   return (
     <div className="flex flex-col">
       {/* Hero */}
@@ -103,7 +106,7 @@ export const AboutUs: React.FC = () => {
             <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
                 Be part of a community that celebrates your success.
             </p>
-            <Button variant="primary" onClick={() => window.location.href = '/#get-invited'}>
+            <Button variant="primary" onClick={openModal}>
                 Get Invited
             </Button>
        </Section>

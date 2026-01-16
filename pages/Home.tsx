@@ -8,9 +8,10 @@ import {
   Award, Target, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { ContactForm } from '../components/ContactForm';
+import { useModal } from '../context/ModalContext';
 
 export const Home: React.FC = () => {
-  const scrollToInvite = () => document.getElementById('get-invited')?.scrollIntoView({ behavior: 'smooth'});
+  const { openModal } = useModal();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -40,7 +41,7 @@ export const Home: React.FC = () => {
             Business Networking Platform
           </h1>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
-            <Button variant="primary" className="text-lg px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white border-none" onClick={scrollToInvite}>
+            <Button variant="primary" className="text-lg px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white border-none" onClick={openModal}>
               Get Invited
             </Button>
           </div>
@@ -207,7 +208,7 @@ export const Home: React.FC = () => {
           </div>
 
           <button 
-             onClick={scrollToInvite}
+             onClick={openModal}
              className="bg-white text-blue-700 px-10 py-4 rounded-full font-bold text-lg hover:bg-blue-50 hover:shadow-lg transition-all transform hover:-translate-y-1 shadow-md uppercase tracking-wider"
           >
              Get Invited
@@ -280,7 +281,7 @@ export const Home: React.FC = () => {
                    Want to build a powerful network and grow your business? Get started now.
                 </p>
                 <button 
-                  onClick={scrollToInvite}
+                  onClick={openModal}
                   className="bg-white text-blue-700 px-12 py-5 rounded-full font-bold text-lg hover:bg-blue-50 hover:shadow-lg transition-all shadow-xl uppercase tracking-widest"
                 >
                   Get Invited
@@ -296,7 +297,7 @@ export const Home: React.FC = () => {
                 <h2 className="text-3xl font-bold text-slate-900 mb-2">Request Your Invitation</h2>
                 <p className="text-slate-600">Take the first step towards transforming your business today.</p>
              </div>
-             <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+             <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 p-6 md:p-8">
                <ContactForm />
              </div>
          </div>

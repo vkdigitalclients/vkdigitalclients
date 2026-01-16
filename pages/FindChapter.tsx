@@ -3,9 +3,11 @@ import { Section } from '../components/Section';
 import { Button } from '../components/Button';
 import { CHAPTERS } from '../constants';
 import { MapPin, Phone, User, Search, Calendar } from 'lucide-react';
+import { useModal } from '../context/ModalContext';
 
 export const FindChapter: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const { openModal } = useModal();
 
   const filteredChapters = CHAPTERS.filter(chapter => 
     chapter.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -77,7 +79,7 @@ export const FindChapter: React.FC = () => {
                      <div className="text-xs text-slate-400">{chapter.rmMobile}</div>
                   </td>
                   <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                    <Button variant="outline" onClick={() => window.location.href = `/#get-invited`}>Get Invited</Button>
+                    <Button variant="outline" onClick={openModal}>Get Invited</Button>
                   </td>
                 </tr>
               ))}
@@ -114,7 +116,7 @@ export const FindChapter: React.FC = () => {
                             {chapter.rmMobile}
                         </div>
                     </div>
-                    <Button fullWidth variant="primary" onClick={() => window.location.href = `/#get-invited`}>Get Invited</Button>
+                    <Button fullWidth variant="primary" onClick={openModal}>Get Invited</Button>
                 </div>
             ))}
              {filteredChapters.length === 0 && (

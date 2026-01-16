@@ -3,8 +3,11 @@ import { Section } from '../components/Section';
 import { Button } from '../components/Button';
 import { Coffee, Mic, Users, Zap, Calendar, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useModal } from '../context/ModalContext';
 
 export const Meetings: React.FC = () => {
+  const { openModal } = useModal();
+  
   return (
     <div className="flex flex-col">
       <div className="bg-slate-900 text-white py-20">
@@ -79,7 +82,7 @@ export const Meetings: React.FC = () => {
                 </div>
              </div>
              <div className="mt-10">
-                <Button variant="primary" onClick={() => window.location.href = '/#get-invited'}>Get Invited Now</Button>
+                <Button variant="primary" onClick={openModal}>Get Invited Now</Button>
              </div>
            </div>
         </div>

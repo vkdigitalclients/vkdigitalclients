@@ -1,110 +1,129 @@
 import React, { useState } from 'react';
 import { Button } from './Button';
 
-export const ContactForm: React.FC = () => {
+interface ContactFormProps {
+  onSuccess?: () => void;
+}
+
+export const ContactForm: React.FC<ContactFormProps> = ({ onSuccess }) => {
   const [formData, setFormData] = useState({
     name: '',
+    mobile: '',
+    email: '',
     business: '',
-    phone: '',
     city: '',
-    chapter: ''
+    location: ''
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Thank you! Your request has been sent. A Chapter Coordinator will contact you shortly.');
-    setFormData({ name: '', business: '', phone: '', city: '', chapter: '' });
+    // Simulate API call
+    setTimeout(() => {
+      alert('Thank you! Your request has been sent. A Chapter Coordinator will contact you shortly.');
+      setFormData({ name: '', mobile: '', email: '', business: '', city: '', location: '' });
+      if (onSuccess) onSuccess();
+    }, 500);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const inputClasses = "mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm border p-2.5";
+  const labelClasses = "block text-sm font-medium text-slate-700 mb-1";
+
   return (
-    <div className="bg-white rounded-xl shadow-xl overflow-hidden" id="get-invited">
-      <div className="p-8">
-        <h3 className="text-2xl font-bold text-slate-900 mb-2">Get Invited</h3>
-        <p className="text-slate-600 mb-6">Fill out the form to visit a local chapter and experience the power of BYN.</p>
-        
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-slate-700">Full Name</label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              required
-              className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm border p-2"
-              value={formData.name}
-              onChange={handleChange}
-            />
-          </div>
-          
-          <div>
-            <label htmlFor="business" className="block text-sm font-medium text-slate-700">Business Name</label>
-            <input
-              type="text"
-              name="business"
-              id="business"
-              required
-              className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm border p-2"
-              value={formData.business}
-              onChange={handleChange}
-            />
-          </div>
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {/* Row 1 */}
+        <div>
+          <label htmlFor="name" className={labelClasses}>Full Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            required
+            className={inputClasses}
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="John Doe"
+          />
+        </div>
+        <div>
+          <label htmlFor="mobile" className={labelClasses}>Mobile Number</label>
+          <input
+            type="tel"
+            name="mobile"
+            id="mobile"
+            required
+            className={inputClasses}
+            value={formData.mobile}
+            onChange={handleChange}
+            placeholder="+91 98765 43210"
+          />
+        </div>
 
-          <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-slate-700">Phone Number</label>
-            <input
-              type="tel"
-              name="phone"
-              id="phone"
-              required
-              className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm border p-2"
-              value={formData.phone}
-              onChange={handleChange}
-            />
-          </div>
-          
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-               <label htmlFor="city" className="block text-sm font-medium text-slate-700">City</label>
-               <input
-                 type="text"
-                 name="city"
-                 id="city"
-                 required
-                 className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm border p-2"
-                 value={formData.city}
-                 onChange={handleChange}
-               />
-            </div>
-             <div>
-               <label htmlFor="chapter" className="block text-sm font-medium text-slate-700">Interested Chapter</label>
-               <select
-                 name="chapter"
-                 id="chapter"
-                 className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm border p-2"
-                 value={formData.chapter}
-                 onChange={handleChange}
-               >
-                 <option value="">Select...</option>
-                 <option value="ameerpet">Ameerpet</option>
-                 <option value="kphb">KPHB</option>
-                 <option value="banjara">Banjara Hills</option>
-                 <option value="gachibowli">Gachibowli</option>
-               </select>
-            </div>
-          </div>
+        {/* Row 2 */}
+        <div>
+          <label htmlFor="email" className={labelClasses}>Email Address</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            required
+            className={inputClasses}
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="john@example.com"
+          />
+        </div>
+        <div>
+          <label htmlFor="business" className={labelClasses}>Your Business</label>
+          <input
+            type="text"
+            name="business"
+            id="business"
+            required
+            className={inputClasses}
+            value={formData.business}
+            onChange={handleChange}
+            placeholder="Company Name / Profession"
+          />
+        </div>
 
-          <div className="pt-2">
-            <Button fullWidth type="submit" variant="primary">Request Invitation</Button>
-          </div>
-        </form>
+        {/* Row 3 */}
+        <div>
+           <label htmlFor="city" className={labelClasses}>City</label>
+           <input
+             type="text"
+             name="city"
+             id="city"
+             required
+             className={inputClasses}
+             value={formData.city}
+             onChange={handleChange}
+             placeholder="Hyderabad"
+           />
+        </div>
+         <div>
+           <label htmlFor="location" className={labelClasses}>Location</label>
+           <input
+             type="text"
+             name="location"
+             id="location"
+             required
+             className={inputClasses}
+             value={formData.location}
+             onChange={handleChange}
+             placeholder="Area or Chapter Name"
+           />
+        </div>
       </div>
-      <div className="bg-slate-50 px-8 py-4 border-t border-slate-100">
-        <p className="text-xs text-slate-500 text-center">We respect your privacy. No spam.</p>
+
+      {/* Row 4 - Center Button */}
+      <div className="pt-6 flex justify-center">
+        <Button type="submit" variant="primary" className="min-w-[200px] shadow-md">Submit Request</Button>
       </div>
-    </div>
+    </form>
   );
 };

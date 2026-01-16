@@ -9,6 +9,8 @@ import { AboutUs } from './pages/AboutUs';
 import { Sponsorships } from './pages/Sponsorships';
 import { Feedbacks } from './pages/Feedbacks';
 import { Contact } from './pages/Contact';
+import { ModalProvider } from './context/ModalContext';
+import { GetInvitedModal } from './components/GetInvitedModal';
 
 const Layout = () => {
   return (
@@ -18,25 +20,28 @@ const Layout = () => {
         <Outlet />
       </main>
       <Footer />
+      <GetInvitedModal />
     </div>
   );
 };
 
 const App: React.FC = () => {
   return (
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="about-us" element={<AboutUs />} />
-          <Route path="meetings" element={<Meetings />} />
-          <Route path="sponsorships" element={<Sponsorships />} />
-          <Route path="feedbacks" element={<Feedbacks />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="find-chapter" element={<FindChapter />} />
-        </Route>
-      </Routes>
-    </HashRouter>
+    <ModalProvider>
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="about-us" element={<AboutUs />} />
+            <Route path="meetings" element={<Meetings />} />
+            <Route path="sponsorships" element={<Sponsorships />} />
+            <Route path="feedbacks" element={<Feedbacks />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="find-chapter" element={<FindChapter />} />
+          </Route>
+        </Routes>
+      </HashRouter>
+    </ModalProvider>
   );
 };
 

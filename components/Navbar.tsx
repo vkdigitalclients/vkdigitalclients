@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from './Button';
+import { useModal } from '../context/ModalContext';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { openModal } = useModal();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,7 +60,7 @@ export const Navbar: React.FC = () => {
                 <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full ${location.pathname === link.path ? 'w-full' : ''}`}></span>
               </Link>
             ))}
-            <Button variant="primary" className="!px-5 !py-2.5 !text-sm ml-4" onClick={() => window.location.href = '/#get-invited'}>Get Invited</Button>
+            <Button variant="primary" className="!px-5 !py-2.5 !text-sm ml-4" onClick={openModal}>Get Invited</Button>
           </div>
 
           {/* Mobile menu button */}
@@ -89,7 +91,7 @@ export const Navbar: React.FC = () => {
               </Link>
             ))}
             <div className="pt-4">
-               <Button fullWidth onClick={() => { toggleMenu(); window.location.href = '/#get-invited'; }}>Get Invited</Button>
+               <Button fullWidth onClick={() => { toggleMenu(); openModal(); }}>Get Invited</Button>
             </div>
           </div>
         </div>
