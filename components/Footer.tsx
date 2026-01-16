@@ -1,57 +1,87 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Instagram, MapPin, Phone, Mail } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-900 text-white pt-12 pb-8">
+    <footer className="bg-slate-900 text-white pt-16 pb-8 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+          
+          {/* Column 1: Logo & Intro */}
+          <div className="space-y-6">
+            <div className="flex items-center gap-2">
               <img 
                 src="/logo.png" 
                 alt="BYN Logo" 
-                className="h-8 w-auto object-contain brightness-0 invert" 
+                className="h-10 w-auto object-contain brightness-0 invert" 
               />
             </div>
-            <p className="text-slate-400 max-w-md">
-              Empowering businesses by creating trusted referral-based growth ecosystems. 
-              Join India's most effective business networking platform.
+            <p className="text-slate-400 text-sm leading-relaxed">
+              Build Your Network (BYN) is India’s first result-oriented business networking platform. 
+              We empower entrepreneurs to grow through trusted, structured, and transparent referral ecosystems.
             </p>
+            <div className="flex space-x-4">
+              <a href="#" className="text-slate-400 hover:text-white transition-colors"><Facebook size={20}/></a>
+              <a href="#" className="text-slate-400 hover:text-white transition-colors"><Twitter size={20}/></a>
+              <a href="#" className="text-slate-400 hover:text-white transition-colors"><Linkedin size={20}/></a>
+              <a href="#" className="text-slate-400 hover:text-white transition-colors"><Instagram size={20}/></a>
+            </div>
           </div>
           
+          {/* Column 2: Company Links */}
           <div>
-            <h3 className="text-sm font-semibold text-slate-200 tracking-wider uppercase mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li><Link to="/" className="text-slate-400 hover:text-white transition-colors">Home</Link></li>
-              <li><Link to="/about-us" className="text-slate-400 hover:text-white transition-colors">About Us</Link></li>
-              <li><Link to="/meetings" className="text-slate-400 hover:text-white transition-colors">Meetings</Link></li>
-              <li><Link to="/find-chapter" className="text-slate-400 hover:text-white transition-colors">Find a Chapter</Link></li>
+            <h3 className="text-sm font-bold text-white tracking-wider uppercase mb-6">Company</h3>
+            <ul className="space-y-3">
+              <li><Link to="/about-us" className="text-slate-400 hover:text-white transition-colors text-sm">About Us</Link></li>
+              <li><Link to="/feedbacks" className="text-slate-400 hover:text-white transition-colors text-sm">Feedbacks</Link></li>
+              <li><a href="#" className="text-slate-400 hover:text-white transition-colors text-sm">Membership</a></li>
+              <li><a href="#" className="text-slate-400 hover:text-white transition-colors text-sm">FAQ</a></li>
+              <li><a href="#" className="text-slate-400 hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-slate-400 hover:text-white transition-colors text-sm">BYN Foundation</a></li>
             </ul>
           </div>
 
+          {/* Column 3: Resources */}
           <div>
-            <h3 className="text-sm font-semibold text-slate-200 tracking-wider uppercase mb-4">Contact</h3>
-            <ul className="space-y-2 text-slate-400">
-              <li>support@byn.com</li>
-              <li>+91 999 999 9999</li>
-              <li>Hyderabad, India</li>
+            <h3 className="text-sm font-bold text-white tracking-wider uppercase mb-6">Explore</h3>
+            <ul className="space-y-3">
+              <li><Link to="/meetings" className="text-slate-400 hover:text-white transition-colors text-sm">Meetings</Link></li>
+              <li><Link to="/find-chapter" className="text-slate-400 hover:text-white transition-colors text-sm">Find a Chapter</Link></li>
+              <li><Link to="/contact" className="text-slate-400 hover:text-white transition-colors text-sm">Start a Chapter</Link></li>
+              <li><a href="#" className="text-slate-400 hover:text-white transition-colors text-sm">Events</a></li>
+              <li><Link to="/sponsorships" className="text-slate-400 hover:text-white transition-colors text-sm">Sponsorship</Link></li>
+              <li><a href="#" className="text-slate-400 hover:text-white transition-colors text-sm">Networking Tips</a></li>
             </ul>
-            <div className="flex space-x-4 mt-4">
-              <a href="#" className="text-slate-400 hover:text-white"><Facebook size={20}/></a>
-              <a href="#" className="text-slate-400 hover:text-white"><Twitter size={20}/></a>
-              <a href="#" className="text-slate-400 hover:text-white"><Linkedin size={20}/></a>
-              <a href="#" className="text-slate-400 hover:text-white"><Instagram size={20}/></a>
-            </div>
           </div>
+
+          {/* Column 4: Contact Us */}
+          <div>
+            <h3 className="text-sm font-bold text-white tracking-wider uppercase mb-6">Contact Us</h3>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <MapPin size={18} className="text-blue-500 mt-0.5 flex-shrink-0" />
+                <span className="text-slate-400 text-sm">Hitech City, Hyderabad,<br/>Telangana, India - 500081</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone size={18} className="text-blue-500 flex-shrink-0" />
+                <a href="tel:+919999999999" className="text-slate-400 hover:text-white transition-colors text-sm">+91 999 999 9999</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail size={18} className="text-blue-500 flex-shrink-0" />
+                <a href="mailto:support@byn.com" className="text-slate-400 hover:text-white transition-colors text-sm">support@byn.com</a>
+              </li>
+            </ul>
+          </div>
+
         </div>
         
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-slate-500 text-sm">© {new Date().getFullYear()} Build Your Network. All rights reserved.</p>
-          <div className="flex space-x-6 mt-4 md:mt-0 text-sm text-slate-500">
-             <a href="#" className="hover:text-white">Privacy Policy</a>
-             <a href="#" className="hover:text-white">Terms of Service</a>
+          <p className="text-slate-500 text-sm mb-4 md:mb-0">© {new Date().getFullYear()} Build Your Network. All rights reserved.</p>
+          <div className="flex space-x-6 text-sm text-slate-500">
+             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+             <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
           </div>
         </div>
       </div>
