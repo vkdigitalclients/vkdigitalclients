@@ -12,6 +12,13 @@ import { Contact } from './pages/Contact';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { TermsOfService } from './pages/TermsOfService';
 import { CookiePolicy } from './pages/CookiePolicy';
+import { Membership } from './pages/Membership';
+import { FAQ } from './pages/FAQ';
+import { Careers } from './pages/Careers';
+import { BYNFoundation } from './pages/BYNFoundation';
+import { StartChapter } from './pages/StartChapter';
+import { Events } from './pages/Events';
+import { NetworkingTips } from './pages/NetworkingTips';
 import { ModalProvider } from './context/ModalContext';
 import { GetInvitedModal } from './components/GetInvitedModal';
 
@@ -41,6 +48,17 @@ const App: React.FC = () => {
             <Route path="feedbacks" element={<Feedbacks />} />
             <Route path="contact" element={<Contact />} />
             <Route path="find-chapter" element={<FindChapter />} />
+            
+            {/* New Pages */}
+            <Route path="membership" element={<Membership />} />
+            <Route path="faq" element={<FAQ />} />
+            <Route path="careers" element={<Careers />} />
+            <Route path="byn-foundation" element={<BYNFoundation />} />
+            <Route path="start-chapter" element={<StartChapter />} />
+            <Route path="events" element={<Events />} />
+            <Route path="networking-tips" element={<NetworkingTips />} />
+            
+            {/* Legal Pages */}
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="terms-of-service" element={<TermsOfService />} />
             <Route path="cookie-policy" element={<CookiePolicy />} />

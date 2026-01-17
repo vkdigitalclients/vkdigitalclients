@@ -7,9 +7,11 @@ import {
   Briefcase, Globe, Laptop, Truck, Utensils, Car, ArrowRight
 } from 'lucide-react';
 import { useModal } from '../context/ModalContext';
+import { useNavigate } from 'react-router-dom';
 
 export const Sponsorships: React.FC = () => {
   const { openModal } = useModal();
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-col">
@@ -31,7 +33,7 @@ export const Sponsorships: React.FC = () => {
               </p>
             </div>
             <div className="pt-10">
-              <Button variant="primary" onClick={() => window.location.href = '/contact'} className="!px-8 !py-4 !text-lg shadow-lg shadow-blue-500/20">
+              <Button variant="primary" onClick={() => navigate('/contact')} className="!px-8 !py-4 !text-lg shadow-lg shadow-blue-500/20">
                 Become a Sponsor <ArrowRight className="ml-2" size={20} />
               </Button>
             </div>
@@ -133,7 +135,7 @@ export const Sponsorships: React.FC = () => {
                     We offer tailored sponsorship packages to suit your business goals and budget. From event titles to digital presence, we have it all.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button variant="white" onClick={() => window.location.href = '/contact'} className="!px-8">Contact Sponsorship Team</Button>
+                    <Button variant="white" onClick={() => navigate('/contact')} className="!px-8">Contact Sponsorship Team</Button>
                     <Button variant="outline" className="text-white border-white hover:bg-white/10 !px-8">Download Media Kit</Button>
                 </div>
             </div>

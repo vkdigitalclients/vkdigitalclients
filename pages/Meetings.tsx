@@ -4,24 +4,39 @@ import { Button } from '../components/Button';
 import { 
   Calendar, MapPin, ShieldCheck,
   TrendingUp, BookOpen, Award, GraduationCap, Eye, Repeat, Network, HeartHandshake,
-  ChevronDown, ChevronUp, Camera, Coffee
+  Camera, Plus, Minus
 } from 'lucide-react';
 import { useModal } from '../context/ModalContext';
 
-// FAQ Item Component
-const FaqItem = ({ question, answer }: { question: string, answer: string }) => {
-  const [isOpen, setIsOpen] = useState(false);
+interface FaqItemProps {
+  question: string;
+  answer: string;
+  isOpen: boolean;
+  toggle: () => void;
+}
+
+// Minimalist FAQ Item Component
+const FaqItem: React.FC<FaqItemProps> = ({ 
+  question, 
+  answer, 
+  isOpen, 
+  toggle 
+}) => {
   return (
     <div className="border-b border-slate-200 last:border-0">
       <button 
-        className="w-full py-4 flex items-center justify-between text-left focus:outline-none group"
-        onClick={() => setIsOpen(!isOpen)}
+        className="w-full py-5 flex items-center justify-between text-left focus:outline-none group"
+        onClick={toggle}
       >
-        <span className="font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">{question}</span>
-        {isOpen ? <ChevronUp className="text-blue-600" size={20} /> : <ChevronDown className="text-slate-400" size={20} />}
+        <span className={`font-bold text-lg transition-colors duration-200 ${isOpen ? 'text-blue-600' : 'text-slate-800 group-hover:text-blue-600'}`}>
+          {question}
+        </span>
+        <span className={`ml-4 flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-blue-600' : 'text-slate-400 group-hover:text-blue-400'}`}>
+            {isOpen ? <Minus size={20} /> : <Plus size={20} />}
+        </span>
       </button>
-      <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 pb-4 opacity-100' : 'max-h-0 opacity-0'}`}>
-        <p className="text-slate-600 leading-relaxed text-sm md:text-base">{answer}</p>
+      <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-48 opacity-100 pb-5' : 'max-h-0 opacity-0'}`}>
+        <p className="text-slate-600 leading-relaxed text-base pr-8">{answer}</p>
       </div>
     </div>
   );
@@ -29,6 +44,30 @@ const FaqItem = ({ question, answer }: { question: string, answer: string }) => 
 
 export const Meetings: React.FC = () => {
   const { openModal } = useModal();
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+
+  const faqs = [
+    { 
+      q: "Do I need to be a member to attend a meeting?", 
+      a: "No, you can attend up to 2 meetings as a visitor to experience the BYN culture and see if it's a right fit for your business before deciding to join." 
+    },
+    { 
+      q: "Is there a fee to attend as a visitor?", 
+      a: "Yes, there is a nominal meeting fee which covers the venue and breakfast charges. This varies slightly by chapter and location." 
+    },
+    { 
+      q: "What should I bring to the meeting?", 
+      a: "Bring plenty of business cards (at least 50), a positive attitude, and a 60-second pitch about who you are and what business you are looking for." 
+    },
+    { 
+      q: "How long does a meeting last?", 
+      a: "Meetings typically last for 90 minutes to 2 hours, usually starting early morning (e.g., 7:30 AM or 8:00 AM) to not interfere with your regular business day." 
+    },
+    { 
+      q: "Can I visit any chapter?", 
+      a: "Yes, you can visit any chapter, provided your business category is not already represented by an existing member in that specific chapter (Category Exclusivity)." 
+    }
+  ];
   
   return (
     <div className="flex flex-col">
@@ -245,33 +284,36 @@ export const Meetings: React.FC = () => {
         </div>
       </Section>
 
-      {/* FAQ */}
-      <Section>
-        <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-slate-900">Frequently Asked Questions</h2>
+      {/* Modern FAQ Section */}
+      <Section className="bg-white">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            
+            {/* Left Side: Questions */}
+            <div>
+                <h2 className="text-4xl font-bold text-slate-900 mb-3">Frequently Asked <span className="text-blue-600">Questions</span></h2>
+                <p className="text-slate-500 mb-10 text-lg">Quick answers to questions you may have.</p>
+                
+                {/* FAQ List */}
+                <div className="space-y-1">
+                    {faqs.map((faq, index) => (
+                        <FaqItem 
+                            key={index} 
+                            question={faq.q} 
+                            answer={faq.a} 
+                            isOpen={openFaqIndex === index}
+                            toggle={() => setOpenFaqIndex(openFaqIndex === index ? null : index)}
+                        />
+                    ))}
+                </div>
             </div>
-            <div className="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm">
-                <FaqItem 
-                    question="Do I need to be a member to attend a meeting?" 
-                    answer="No, you can attend up to 2 meetings as a visitor to experience the BYN culture and see if it's a right fit for your business before deciding to join." 
-                />
-                <FaqItem 
-                    question="Is there a fee to attend as a visitor?" 
-                    answer="Yes, there is a nominal meeting fee which covers the venue and breakfast charges. This varies slightly by chapter and location." 
-                />
-                <FaqItem 
-                    question="What should I bring to the meeting?" 
-                    answer="Bring plenty of business cards (at least 50), a positive attitude, and a 60-second pitch about who you are and what business you are looking for." 
-                />
-                <FaqItem 
-                    question="How long does a meeting last?" 
-                    answer="Meetings typically last for 90 minutes to 2 hours, usually starting early morning (e.g., 7:30 AM or 8:00 AM) to not interfere with your regular business day." 
-                />
-                <FaqItem 
-                    question="Can I visit any chapter?" 
-                    answer="Yes, you can visit any chapter, provided your business category is not already represented by an existing member in that specific chapter (Category Exclusivity)." 
-                />
+
+            {/* Right Side: Image Only */}
+            <div className="hidden lg:flex justify-center items-center">
+                 <img 
+                    src="https://img.freepik.com/free-vector/faqs-concept-illustration_114360-5215.jpg" 
+                    alt="FAQ Illustration" 
+                    className="w-full max-w-lg object-contain"
+                 />
             </div>
         </div>
       </Section>

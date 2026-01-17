@@ -32,10 +32,10 @@ export const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li><Link to="/about-us" className="text-slate-400 hover:text-white transition-colors text-sm">About Us</Link></li>
               <li><Link to="/feedbacks" className="text-slate-400 hover:text-white transition-colors text-sm">Feedbacks</Link></li>
-              <li><a href="#" className="text-slate-400 hover:text-white transition-colors text-sm">Membership</a></li>
-              <li><a href="#" className="text-slate-400 hover:text-white transition-colors text-sm">FAQ</a></li>
-              <li><a href="#" className="text-slate-400 hover:text-white transition-colors text-sm">Careers</a></li>
-              <li><a href="#" className="text-slate-400 hover:text-white transition-colors text-sm">BYN Foundation</a></li>
+              <li><Link to="/membership" className="text-slate-400 hover:text-white transition-colors text-sm">Membership</Link></li>
+              <li><Link to="/faq" className="text-slate-400 hover:text-white transition-colors text-sm">FAQ</Link></li>
+              <li><Link to="/careers" className="text-slate-400 hover:text-white transition-colors text-sm">Careers</Link></li>
+              <li><Link to="/byn-foundation" className="text-slate-400 hover:text-white transition-colors text-sm">BYN Foundation</Link></li>
             </ul>
           </div>
 
@@ -45,10 +45,10 @@ export const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li><Link to="/meetings" className="text-slate-400 hover:text-white transition-colors text-sm">Meetings</Link></li>
               <li><Link to="/find-chapter" className="text-slate-400 hover:text-white transition-colors text-sm">Find a Chapter</Link></li>
-              <li><Link to="/contact" className="text-slate-400 hover:text-white transition-colors text-sm">Start a Chapter</Link></li>
-              <li><a href="#" className="text-slate-400 hover:text-white transition-colors text-sm">Events</a></li>
+              <li><Link to="/start-chapter" className="text-slate-400 hover:text-white transition-colors text-sm">Start a Chapter</Link></li>
+              <li><Link to="/events" className="text-slate-400 hover:text-white transition-colors text-sm">Events</Link></li>
               <li><Link to="/sponsorships" className="text-slate-400 hover:text-white transition-colors text-sm">Sponsorship</Link></li>
-              <li><a href="#" className="text-slate-400 hover:text-white transition-colors text-sm">Networking Tips</a></li>
+              <li><Link to="/networking-tips" className="text-slate-400 hover:text-white transition-colors text-sm">Networking Tips</Link></li>
             </ul>
           </div>
 
