@@ -15,10 +15,14 @@ export const Feedbacks: React.FC = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="bg-slate-50 border-b border-slate-200 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold text-slate-900 mb-4">Member Feedbacks</h1>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+      {/* Hero Section - Matching About Us Style */}
+      <div className="bg-slate-900 text-white py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] opacity-20 bg-cover bg-center"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 to-slate-900"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">Member Feedbacks</h1>
+          <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
             See what our community has to say about their journey with BYN.
           </p>
         </div>

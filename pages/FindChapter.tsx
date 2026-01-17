@@ -16,10 +16,14 @@ export const FindChapter: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="bg-slate-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">Find a Chapter</h1>
-          <p className="text-slate-300 max-w-xl">
+      {/* Hero Section - Matching About Us Style */}
+      <div className="bg-slate-900 text-white py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] opacity-20 bg-cover bg-center"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 to-slate-900"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">Find a Chapter</h1>
+          <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
             BYN is a great place to build networks, get referrals & scale your business. Locate a chapter near you.
           </p>
         </div>

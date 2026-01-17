@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Linkedin, Instagram, MapPin, Phone, Mail } from 'lucide-react';
+import { Logo } from './Logo';
 
 export const Footer: React.FC = () => {
   return (
@@ -11,11 +12,7 @@ export const Footer: React.FC = () => {
           {/* Column 1: Logo & Intro */}
           <div className="space-y-6">
             <div className="flex items-center gap-2">
-              <img 
-                src="/logo.png" 
-                alt="BYN Logo" 
-                className="h-10 w-auto object-contain brightness-0 invert" 
-              />
+              <Logo variant="white" />
             </div>
             <p className="text-slate-400 text-sm leading-relaxed">
               Build Your Network (BYN) is India’s first result-oriented business networking platform. 

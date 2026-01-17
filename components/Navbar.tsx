@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronRight } from 'lucide-react';
 import { Button } from './Button';
 import { useModal } from '../context/ModalContext';
+import { Logo } from './Logo';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,6 +19,18 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const isActive = (path: string) => location.pathname === path 
@@ -28,74 +41,98 @@ export const Navbar: React.FC = () => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about-us' },
     { name: 'Meetings', path: '/meetings' },
-    { name: 'Find Chapter', path: '/find-chapter' },
     { name: 'Sponsorships', path: '/sponsorships' },
-    { name: 'Feedbacks', path: '/feedbacks' },
     { name: 'Contact', path: '/contact' },
   ];
 
   return (
-    <nav className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-md border-b border-slate-200/50' : 'bg-white border-b border-slate-100'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20">
-          <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0 flex items-center gap-3 group">
-              <img 
-                src="/logo.png" 
-                alt="BYN Logo" 
-                className="h-10 w-auto object-contain" 
-              />
-            </Link>
-          </div>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <Link 
-                key={link.name}
-                to={link.path} 
-                className={`${isActive(link.path)} transition-colors relative group`}
-              >
-                {link.name}
-                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full ${location.pathname === link.path ? 'w-full' : ''}`}></span>
+    <>
+      <nav className={`sticky top-0 z-40 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-md border-b border-slate-200/50' : 'bg-white border-b border-slate-100'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-20">
+            <div className="flex items-center">
+              <Link to="/" className="flex-shrink-0 flex items-center gap-3 group">
+                <Logo />
               </Link>
-            ))}
-            <Button variant="primary" className="!px-5 !py-2.5 !text-sm ml-4" onClick={openModal}>Get Invited</Button>
-          </div>
+            </div>
 
-          {/* Mobile menu button */}
-          <div className="flex items-center md:hidden">
-            <button
-              onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none"
-            >
-              <span className="sr-only">Open main menu</span>
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center space-x-8">
+              {navLinks.map((link) => (
+                <Link 
+                  key={link.name}
+                  to={link.path} 
+                  className={`${isActive(link.path)} transition-colors relative group`}
+                >
+                  {link.name}
+                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full ${location.pathname === link.path ? 'w-full' : ''}`}></span>
+                </Link>
+              ))}
+              <Button variant="primary" className="!px-5 !py-2.5 !text-sm ml-4" onClick={openModal}>Get Invited</Button>
+            </div>
+
+            {/* Mobile menu button */}
+            <div className="flex items-center md:hidden">
+              <button
+                onClick={toggleMenu}
+                className="inline-flex items-center justify-center p-2 rounded-md text-slate-700 hover:text-blue-600 hover:bg-slate-50 focus:outline-none transition-colors"
+              >
+                <span className="sr-only">Open main menu</span>
+                <Menu size={28} strokeWidth={2} />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </nav>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-white border-b border-slate-200 shadow-xl absolute w-full left-0 top-20">
-          <div className="px-4 py-6 space-y-3">
+      {/* Mobile Sidebar (Drawer) */}
+      <div 
+        className={`fixed inset-0 z-50 md:hidden transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+      >
+        {/* Backdrop */}
+        <div 
+          className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" 
+          onClick={toggleMenu}
+        ></div>
+
+        {/* Sidebar Panel */}
+        <div 
+          className={`absolute top-0 right-0 h-full w-[280px] bg-white shadow-2xl transform transition-transform duration-300 ease-in-out flex flex-col ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        >
+          {/* Header */}
+          <div className="flex items-center justify-between p-5 border-b border-slate-100">
+             <span className="font-bold text-lg text-slate-900">Menu</span>
+             <button 
+               onClick={toggleMenu} 
+               className="p-2 rounded-full hover:bg-slate-100 text-slate-500 transition-colors"
+             >
+               <X size={24} />
+             </button>
+          </div>
+
+          {/* Links */}
+          <div className="flex-1 overflow-y-auto py-4 px-4 space-y-2">
             {navLinks.map((link) => (
               <Link 
                 key={link.name}
                 to={link.path} 
                 onClick={toggleMenu} 
-                className="block px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+                className={`flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-all ${location.pathname === link.path ? 'bg-blue-50 text-blue-600' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'}`}
               >
                 {link.name}
+                {location.pathname === link.path && <ChevronRight size={16} />}
               </Link>
             ))}
-            <div className="pt-4">
-               <Button fullWidth onClick={() => { toggleMenu(); openModal(); }}>Get Invited</Button>
-            </div>
+          </div>
+
+          {/* Footer Actions */}
+          <div className="p-5 border-t border-slate-100 bg-slate-50/50">
+             <Button fullWidth onClick={() => { toggleMenu(); openModal(); }} className="shadow-lg shadow-blue-500/20">
+               Get Invited
+             </Button>
           </div>
         </div>
-      )}
-    </nav>
+      </div>
+    </>
   );
 };
