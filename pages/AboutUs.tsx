@@ -3,8 +3,8 @@ import { Section } from '../components/Section';
 import { Button } from '../components/Button';
 import { 
   Users, TrendingUp, Globe, Lock, Calendar, Gift, Smartphone, 
-  Medal, HeartHandshake, PartyPopper, ShieldCheck, Link, BookOpen, 
-  Sprout, Sun, Languages, ArrowRight, CheckCircle2
+  Medal, PartyPopper, ShieldCheck, Link, BookOpen, 
+  Sprout, Sun, Languages, CheckCircle2
 } from 'lucide-react';
 import { useModal } from '../context/ModalContext';
 
@@ -13,43 +13,30 @@ export const AboutUs: React.FC = () => {
   
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <div className="bg-slate-900 text-white py-24 relative overflow-hidden">
-         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] opacity-20 bg-cover bg-center"></div>
-         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 to-slate-900"></div>
-         
-         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">About Us</h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              We are building a trusted ecosystem where entrepreneurs grow together. Learn more about our mission, vision, and the values that drive us.
-            </p>
-         </div>
-      </div>
-
-      {/* 1. Intro Section: Power of Referrals */}
-      {/* Note: Image Leftside, & Text Rightside */}
-      <Section className="pt-20 pb-16">
+      
+      {/* SECTION 1 - THE POWER OF REFERRALS */}
+      <Section className="py-12 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="relative">
-             <div className="absolute -inset-4 bg-blue-100/50 rounded-3xl -rotate-2"></div>
+          <div className="relative h-full min-h-[400px]">
              <img 
                src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" 
                alt="Power of Referrals" 
-               className="relative rounded-2xl shadow-xl w-full h-full object-cover aspect-[4/3]"
+               className="rounded-2xl shadow-xl w-full h-full object-cover"
              />
           </div>
-          <div className="space-y-6">
-             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
-               The Power of Referrals to Transform Your Business
+          <div className="flex flex-col justify-center h-full">
+             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight mb-6">
+               The Power of Referrals<br/>
+               to Transform Your Business
              </h1>
-             <div className="space-y-4 text-lg text-slate-600 leading-relaxed">
+             <div className="space-y-4 text-lg text-slate-600 leading-relaxed mb-8">
                <p>Referrals are not just leads — they come with trust already built in.</p>
                <p>People buy faster and stay longer when they are recommended by someone they trust.</p>
                <p>Referrals shorten the sales cycle and increase conversion rates.</p>
                <p>In a strong network, every referral is meaningful and intentional.</p>
                <p className="font-semibold text-blue-700">That’s why referrals don’t just grow your business — they transform it.</p>
              </div>
-             <div className="pt-4">
+             <div className="flex justify-end">
                <Button variant="primary" onClick={openModal} className="!px-8 !py-3 !text-lg shadow-lg shadow-blue-500/20">
                  Get Invited
                </Button>
@@ -58,29 +45,10 @@ export const AboutUs: React.FC = () => {
         </div>
       </Section>
 
-      {/* 2. Mission Section */}
-      {/* Note: Leftside image, rightside mission content */}
-      <Section colored className="py-20">
+      {/* SECTION 2 - OUR MISSION */}
+      <Section colored className="py-12 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="relative order-1">
-             {/* Decorative elements */}
-             <div className="absolute top-0 left-0 w-20 h-20 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-             <div className="absolute top-0 right-0 w-20 h-20 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-             
-             <img 
-               src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" 
-               alt="Our Mission" 
-               className="relative rounded-2xl shadow-2xl w-full h-full object-cover aspect-[4/3]"
-             />
-             <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg border border-slate-100 max-w-xs hidden md:block">
-                <p className="font-bold text-slate-900 text-lg">"Connect people with purpose"</p>
-             </div>
-          </div>
-          
-          <div className="order-2 space-y-6">
-             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-sm font-medium">
-               <Globe size={16} /> Our Purpose
-             </div>
+          <div className="order-1 space-y-6">
              <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Our Mission</h2>
              <p className="text-lg text-slate-600 leading-relaxed text-justify">
                At <strong>BYN – Build Your Network</strong>, our mission is to help business owners grow faster and stronger through the power of meaningful connections. We exist to create a trusted networking ecosystem where entrepreneurs expand their reach, build reliable relationships, and generate real business opportunities.
@@ -92,17 +60,25 @@ export const AboutUs: React.FC = () => {
                Our mission is simple: connect people with purpose, so every connection creates value.
              </p>
           </div>
+          
+          <div className="relative order-2 h-full min-h-[300px]">
+             <img 
+               src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" 
+               alt="Our Mission" 
+               className="rounded-2xl shadow-2xl w-full h-full object-cover"
+             />
+          </div>
         </div>
       </Section>
 
-      {/* 3. Why Join Section */}
-      <Section className="bg-white">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+      {/* SECTION 3 - WHY BYN */}
+      <Section className="py-12 bg-white">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Why Should You Join BYN?</h2>
           <p className="text-slate-600 text-lg">Unlock the potential of your business with these exclusive benefits.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
             { 
               icon: Globe, 
@@ -148,35 +124,29 @@ export const AboutUs: React.FC = () => {
               icon: Medal, 
               title: "Leadership & Recognition Opportunities", 
               desc: "Become a leader in your chapter and gain recognition within the business community." 
-            },
-            { 
-              icon: HeartHandshake, 
-              title: "Business Growth with Trust & Ethics", 
-              desc: "Grow your business in a professional, ethical, and trust-based networking environment." 
-            },
+            }
           ].map((item, i) => (
-            <div key={i} className="bg-slate-50 p-6 rounded-xl border border-slate-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group h-full flex flex-col">
-               <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-blue-600 mb-4 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                 <item.icon size={24} />
+            <div key={i} className="bg-slate-50 p-6 rounded-xl border border-slate-100 flex items-start gap-4 hover:shadow-lg transition-all duration-300">
+               <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-blue-600 shadow-sm flex-shrink-0 mt-1">
+                 <item.icon size={20} />
                </div>
-               <h3 className="text-lg font-bold text-slate-900 mb-3">{item.title}</h3>
-               <p className="text-slate-600 leading-relaxed flex-grow">{item.desc}</p>
+               <div>
+                   <h3 className="font-bold text-slate-900 mb-1">{item.title}</h3>
+                   <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
+               </div>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* 4. Philosophy Section */}
-      <Section colored>
+      {/* SECTION 4 - BYN PHILOSOPHY */}
+      <Section colored className="py-16">
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-5">
              <div className="lg:col-span-2 bg-slate-900 text-white p-10 flex flex-col justify-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-blue-600/20"></div>
                 <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl -mb-16 -mr-16"></div>
-                <h2 className="text-3xl font-bold mb-6 relative z-10">BYN Philosophy</h2>
-                <p className="text-2xl font-light italic leading-relaxed relative z-10 text-blue-100">
-                  "We Rise by Lifting Others"
-                </p>
+                <h2 className="text-4xl font-bold mb-6 relative z-10 leading-tight">We Rise<br/>By Lifting Others</h2>
                 <div className="mt-8 w-16 h-1 bg-blue-500 rounded-full relative z-10"></div>
              </div>
              <div className="lg:col-span-3 p-10 lg:p-12">
@@ -184,18 +154,15 @@ export const AboutUs: React.FC = () => {
                    <p className="mb-6">
                      At BYN, we believe that true success is never built alone. It is built through people, relationships, and the willingness to support one another. Our philosophy, <strong>“We Rise by Lifting Others,”</strong> means that when you help someone grow, you grow with them.
                    </p>
-                   <p className="mb-6">
-                     In business, competition is everywhere—but collaboration creates something greater. When members genuinely support each other, share opportunities, and open doors for others, success multiplies. One person’s growth becomes everyone’s growth.
-                   </p>
                    
-                   <h4 className="text-lg font-bold text-slate-900 mb-4">Lifting others means:</h4>
-                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-0">
                      {[
-                       "Referring business without expecting immediate return",
+                       "Referring Business to the Members",
                        "Sharing knowledge and experience",
                        "Encouraging new members",
                        "Celebrating each other’s wins",
-                       "Standing together in challenges"
+                       "Standing together in challenges",
+                       "Collaborating for Mutual Benefits"
                      ].map((item, idx) => (
                        <li key={idx} className="flex items-start gap-2 text-sm md:text-base">
                          <CheckCircle2 size={18} className="text-blue-500 mt-1 flex-shrink-0" />
@@ -203,41 +170,16 @@ export const AboutUs: React.FC = () => {
                        </li>
                      ))}
                    </ul>
-
-                   <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
-                     <p className="font-medium text-slate-900 mb-2">That is the BYN way:</p>
-                     <p className="text-blue-700 font-bold text-lg">Support first. Grow together. Rise as one.</p>
-                   </div>
                 </div>
              </div>
           </div>
         </div>
       </Section>
 
-      {/* 5. Vision Section */}
-      <Section className="bg-white">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-           <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Our Vision</h2>
-           
-           <div className="p-8 md:p-12 bg-slate-50 rounded-3xl border border-slate-100 relative">
-             <div className="text-5xl font-bold text-blue-100 absolute top-4 left-4 font-serif">"</div>
-             <p className="text-lg md:text-xl text-slate-700 leading-relaxed mb-6 relative z-10">
-               Our vision is to empower <span className="text-blue-600 font-bold">1 lakh business owners</span> across the world through a powerful network of <span className="text-blue-600 font-bold">2,000 BYN chapters</span> in the next five years. We aim to build a global community where entrepreneurs create meaningful connections, grow through collaboration, and support each other’s success.
-             </p>
-             <p className="text-lg md:text-xl text-slate-700 leading-relaxed mb-6 relative z-10">
-               We envision a future where business owners continuously develop their skills, use the latest technology, and gain access to the right people and opportunities. Through strong networks, smart learning, and modern tools, they don’t just grow their businesses — they scale them.
-             </p>
-             <p className="text-lg md:text-xl font-medium text-slate-900 relative z-10">
-               Above all, our vision is to help entrepreneurs build not only successful businesses, but also confident leadership, financial freedom, and a balanced, happy life.
-             </p>
-           </div>
-        </div>
-      </Section>
-
-      {/* 6. We Rise by Lifting Others - Callout */}
+      {/* SECTION 5 - WE RISE BY LIFTING OTHERS (VISUAL) */}
       <div className="bg-slate-900 py-24 px-4 text-center relative overflow-hidden">
-         {/* Background pattern */}
-         <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
+         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] opacity-30 bg-cover bg-center"></div>
+         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-slate-900/80"></div>
          
          <div className="max-w-3xl mx-auto relative z-10 text-white space-y-8">
             <h2 className="text-3xl md:text-4xl font-bold">We Rise by Lifting Others</h2>
@@ -251,76 +193,138 @@ export const AboutUs: React.FC = () => {
               In BYN, no one grows alone. We grow by sharing, by trusting, and by standing for each other.<br/>
               When one business rises, the entire network rises with it.
             </p>
-            <p className="text-2xl font-semibold text-white pt-4">
-              That is the power of lifting others —<br/>
-              <span className="text-blue-400">because when we lift together, we rise together.</span>
-            </p>
          </div>
       </div>
 
-      {/* 7. Core Values Section */}
-      <Section className="bg-white">
-        <div className="text-center mb-16">
+      {/* SECTION 6 - MEET OUR FOUNDER */}
+      <Section className="py-16 bg-white">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Meet Our Founder</h2>
+                  <h3 className="text-xl font-bold text-blue-600 mb-4">Prasad T</h3>
+                  <p className="text-slate-600 text-lg leading-relaxed mb-4">
+                      A visionary leader with a passion for connecting people, Prasad established BYN with a single goal: to make business networking effective, transparent, and results-driven.
+                  </p>
+                  <p className="text-slate-600 text-lg leading-relaxed">
+                      With over a decade of experience in business development and community building, he understands that the true capital of any business is its network. His vision drives BYN to be more than just a platform—it's a growth engine for entrepreneurs.
+                  </p>
+              </div>
+              <div className="relative">
+                  <div className="absolute -inset-4 bg-blue-100 rounded-3xl -rotate-2"></div>
+                  <img 
+                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" 
+                      alt="Founder" 
+                      className="relative rounded-2xl shadow-xl w-full h-full object-cover aspect-[4/5]"
+                  />
+              </div>
+          </div>
+      </Section>
+
+      {/* SECTION 7 - VISION 2030 */}
+      <div className="bg-slate-900 py-24 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] opacity-20 bg-cover bg-center"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <div className="max-w-2xl">
+                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Vision 2030</h2>
+                  <p className="text-xl text-blue-100 leading-relaxed mb-6">
+                      Founder’s Vision is to empower <strong>1 lakh business owners</strong> across the world through a powerful network of <strong>2,000 BYN chapters</strong>. We aim to build a global community where entrepreneurs create meaningful connections, grow through collaboration, and support each other’s success.
+                  </p>
+                  <p className="text-lg text-slate-300 leading-relaxed">
+                      We envision a future where business owners continuously develop their skills, use the latest technology, and gain access to the right people and opportunities. Through strong networks, smart learning, and modern tools, they don’t just grow their businesses — they scale them.
+                  </p>
+              </div>
+          </div>
+      </div>
+
+      {/* SECTION 8 - OUR CORE VALUES */}
+      <Section className="py-12 bg-white">
+        <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Our Core Values</h2>
           <p className="text-slate-600 text-lg">The foundation of our culture and community.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
            {[
              {
                icon: PartyPopper,
                title: "Celebration of Effort",
-               desc: "We honor every step taken and every milestone achieved. When effort is appreciated, people feel seen, motivated, and empowered to give their best. Recognition builds confidence and creates a culture where success grows naturally."
+               desc: "We honor every step taken and every milestone achieved."
              },
              {
                icon: ShieldCheck,
                title: "Responsibility with Integrity",
-               desc: "We stand by our words and actions. Taking responsibility, especially in tough times, builds trust and respect. Integrity makes relationships strong and growth reliable."
+               desc: "We stand by our words and actions. Integrity makes relationships strong."
              },
              {
                icon: Link,
                title: "Creating Meaningful Connections",
-               desc: "True success is built through people. By connecting with honesty and care, we create relationships that bring trust, support, and endless opportunities."
+               desc: "True success is built through people connecting with honesty and care."
              },
              {
                icon: BookOpen,
                title: "Growth Through Learning",
-               desc: "The more you learn, the more you become. Continuous learning shapes your future, strengthens your skills, and prepares you to achieve bigger goals."
+               desc: "Continuous learning shapes your future and strengthens your skills."
              },
              {
                icon: Sprout,
                title: "Honoring Roots, Embracing Change",
-               desc: "We respect our values while welcoming new ideas. By blending tradition with innovation, we move forward with strength, creativity, and confidence."
+               desc: "We respect our values while welcoming new ideas and innovation."
              },
              {
                icon: Sun,
                title: "Power of a Positive Mindset",
-               desc: "Your mindset shapes your journey. When you choose positivity, you attract better people, brighter opportunities, and stronger results. Positive thinking leads to powerful outcomes."
+               desc: "Choose positivity to attract better people and brighter opportunities."
              }
            ].map((val, i) => (
-             <div key={i} className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300">
-               <div className="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 mb-6 mx-auto">
-                 <val.icon size={28} />
+             <div key={i} className="bg-slate-50 p-6 rounded-xl border border-slate-100 hover:shadow-lg transition-all duration-300">
+               <div className="flex items-center gap-4 mb-3">
+                   <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-blue-600 shadow-sm">
+                     <val.icon size={20} />
+                   </div>
+                   <h3 className="text-lg font-bold text-slate-900">{val.title}</h3>
                </div>
-               <h3 className="text-xl font-bold text-slate-900 mb-4 text-center">{val.title}</h3>
-               <p className="text-slate-600 text-sm leading-relaxed text-center">{val.desc}</p>
+               <p className="text-slate-600 text-sm leading-relaxed">{val.desc}</p>
              </div>
            ))}
         </div>
       </Section>
 
-      {/* 8. CTA Section */}
-      <div className="bg-slate-50 py-24 border-t border-slate-200">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Start Your BYN Journey</h2>
-           <p className="text-xl text-slate-600 mb-10">
-             Join a network that values your growth as much as you do.
-           </p>
-           <Button variant="primary" onClick={openModal} className="!px-10 !py-4 !text-lg shadow-xl shadow-blue-500/20">
-             Get Invited <ArrowRight className="ml-2" size={20} />
-           </Button>
+      {/* SECTION 9 - START YOUR BYN JOURNEY (3 STEPS) */}
+      <section className="py-16 bg-blue-600 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+             <h2 className="text-3xl md:text-4xl font-bold mb-4">Start Your BYN Journey</h2>
+             <p className="text-lg text-blue-100 max-w-3xl mx-auto">
+               Get invited to a BYN Business Networking Meet and Witness the Power of Referrals in Action
+             </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+             <div className="hidden md:block absolute top-10 left-1/6 right-1/6 h-0.5 bg-blue-400 -z-10 w-2/3 mx-auto"></div>
+             
+             {[
+               { title: "Attend a BYN Meeting", desc: "Experience the power of BYN Network.", step: 1 },
+               { title: "Meet The Members", desc: "Learn how they can help you to grow your business.", step: 2 },
+               { title: "Join BYN", desc: "Become a BYN Chapter Member to Access all benefits.", step: 3 }
+             ].map((step, i) => (
+               <div key={i} className="flex flex-col items-center text-center p-6 bg-blue-700/50 rounded-2xl backdrop-blur-sm border border-blue-500">
+                  <div className="w-20 h-20 rounded-full bg-white text-blue-600 flex items-center justify-center text-2xl font-bold mb-6 shadow-lg">
+                     {step.step}
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{step.title}</h3>
+                  <p className="text-blue-100 text-sm">{step.desc}</p>
+               </div>
+             ))}
+          </div>
+          
+          <div className="mt-12 text-center">
+             <Button variant="white" onClick={openModal} className="!px-10 !text-blue-600 !font-bold">Get Invited Now</Button>
+          </div>
         </div>
-      </div>
+      </section>
+
     </div>
   );
 };
