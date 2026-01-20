@@ -17,7 +17,7 @@ export const Home: React.FC = () => {
 
   // Rotating Text Logic
   const [textIndex, setTextIndex] = useState(0);
-  const rotatingTexts = ["Connect Network", "Referrals", "Revenue", "Business"];
+  const rotatingTexts = ["Network", "Referrals", "Revenue", "Business"];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -56,16 +56,28 @@ export const Home: React.FC = () => {
             
             {/* Left Content */}
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-medium text-sm mb-6 backdrop-blur-md shadow-lg shadow-blue-900/20">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                </span>
-                Build Your Network
-              </div>
-              
-              <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6 leading-[1.1] min-h-[1.2em]">
-                {rotatingTexts[textIndex]}
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6 leading-none flex items-baseline gap-3 whitespace-nowrap">
+                <span className="text-white">Build Your</span>
+                <div className="relative h-[1.1em] w-[220px] sm:w-[300px] md:w-[380px] overflow-hidden flex items-baseline">
+                   {/* Invisible placeholder for correct baseline alignment */}
+                   <span className="opacity-0 select-none">Referrals</span>
+                   
+                   {/* Animated Words */}
+                   {rotatingTexts.map((text, i) => (
+                      <span
+                        key={i}
+                        className={`absolute left-0 font-bold bg-gradient-to-r from-blue-400 via-blue-200 to-blue-400 bg-clip-text text-transparent transition-all duration-700 ease-in-out ${
+                          i === textIndex 
+                            ? "top-0 opacity-100 transform-none" 
+                            : i === (textIndex - 1 + rotatingTexts.length) % rotatingTexts.length 
+                              ? "top-full opacity-0" // Slide down out
+                              : "-top-full opacity-0" // Waiting above
+                        }`}
+                      >
+                        {text}
+                      </span>
+                   ))}
+                </div>
               </h1>
               
               <p className="text-xl text-slate-300 mb-8 leading-relaxed max-w-2xl border-l-4 border-blue-600 pl-6 bg-gradient-to-r from-blue-900/20 to-transparent py-2">
