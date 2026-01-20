@@ -7,17 +7,8 @@ import { Logo } from './Logo';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const { openModal } = useModal();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -33,9 +24,10 @@ export const Navbar: React.FC = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  // Active link style - Keeping white for all, with underline for active
   const isActive = (path: string) => location.pathname === path 
-    ? "text-blue-600 font-semibold" 
-    : "text-slate-600 hover:text-blue-600 font-medium";
+    ? "text-white font-bold" 
+    : "text-blue-100 hover:text-white font-medium";
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -47,12 +39,12 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className={`sticky top-0 z-40 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-md border-b border-slate-200/50' : 'bg-white border-b border-slate-100'}`}>
+      <nav className="sticky top-0 z-40 bg-blue-600 border-b border-blue-500 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20">
             <div className="flex items-center">
               <Link to="/" className="flex-shrink-0 flex items-center gap-3 group">
-                <Logo />
+                <Logo variant="white" />
               </Link>
             </div>
 
@@ -62,20 +54,20 @@ export const Navbar: React.FC = () => {
                 <Link 
                   key={link.name}
                   to={link.path} 
-                  className={`${isActive(link.path)} transition-colors relative group`}
+                  className={`${isActive(link.path)} transition-colors relative group py-2`}
                 >
                   {link.name}
-                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full ${location.pathname === link.path ? 'w-full' : ''}`}></span>
+                  <span className={`absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full ${location.pathname === link.path ? 'w-full' : ''}`}></span>
                 </Link>
               ))}
-              <Button variant="primary" className="!px-5 !py-2.5 !text-sm ml-4" onClick={openModal}>Get Invited</Button>
+              <Button variant="white" className="!px-5 !py-2.5 !text-sm ml-4 !font-bold !text-blue-600" onClick={openModal}>Get Invited</Button>
             </div>
 
             {/* Mobile menu button */}
             <div className="flex items-center md:hidden">
               <button
                 onClick={toggleMenu}
-                className="inline-flex items-center justify-center p-2 rounded-md text-slate-700 hover:text-blue-600 hover:bg-slate-50 focus:outline-none transition-colors"
+                className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-blue-700 focus:outline-none transition-colors"
               >
                 <span className="sr-only">Open main menu</span>
                 <Menu size={28} strokeWidth={2} />
